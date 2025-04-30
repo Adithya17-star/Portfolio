@@ -1,156 +1,106 @@
-// Navigation Toggle
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-menu a');
-
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
-});
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-    });
-});
-
-// Typing Animation
-const typingElement = document.querySelector('.typing');
-const texts = ['Adithya Kakarla', 'AI Enthusiast', 'Full-Stack Developer'];
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function type() {
-    const currentText = texts[textIndex];
-    if (isDeleting) {
-        typingElement.textContent = currentText.substring(0, charIndex--);
-        if (charIndex < 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            setTimeout(type, 500);
-            return;
-        }
+// Set current year in footer with error handling
+const setCurrentYear = () => {
+    const yearElement = document.getElementById('year');
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
     } else {
-        typingElement.textContent = currentText.substring(0, charIndex++);
-        if (charIndex > currentText.length) {
-            isDeleting = true;
-            setTimeout(type, 1500);
-            return;
-        }
+      console.warn('Year element not found');
     }
-    setTimeout(type, isDeleting ? 100 : 150);
-}
-
-// Start typing animation when the element is visible
-const observer = new IntersectionObserver(
-    (entries) => {
-        if (entries[0].isIntersecting) {
-            type();
-            observer.disconnect();
-        }
-    },
-    { threshold: 0.1 }
-);
-
-if (typingElement) {
-    observer.observe(typingElement);
-}
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        const offset = 70; // Height of fixed navbar
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-        
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Stats Counter Animation
-const stats = document.querySelectorAll('.number');
-const statsSection = document.querySelector('.stats');
-let animated = false;
-
-function animateStats() {
-    stats.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        let current = 0;
-        const increment = target / 50;
-        
-        const updateCount = () => {
-            if (current < target) {
-                current += increment;
-                stat.textContent = Math.ceil(current);
-                setTimeout(updateCount, 20);
-            } else {
-                stat.textContent = target;
-            }
-        };
-        
-        updateCount();
-    });
-}
-
-// Intersection Observer for Stats Animation
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !animated) {
-            animateStats();
-            animated = true;
-        }
-    });
-}, { threshold: 0.5 });
-
-if (statsSection) {
-    statsObserver.observe(statsSection);
-}
-
-// Form Handling
-const contactForm = document.getElementById('contact-form');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-    
-    // Here you would typically send the data to a server
-    console.log('Form submitted:', data);
-    
-    // Clear form
-    contactForm.reset();
-    
-    // Show success message
-    alert('Thank you for your message! I will get back to you soon.');
-});
-
-// Active Navigation Link on Scroll
-const sections = document.querySelectorAll('section');
-
-window.addEventListener('scroll', () => {
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop - 150) {
-            current = section.getAttribute('id');
-        }
-    });
+  };
+  
+  // Smooth scrolling with intersection observer for active link highlighting
+  const setupSmoothScrolling = () => {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
     
     navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+          
+          // Update active class
+          navLinks.forEach(nav => nav.classList.remove('active'));
+          link.classList.add('active');
         }
+      });
     });
-});
+  
+    // Intersection Observer for section visibility
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+            if (activeLink) {
+              navLinks.forEach(nav => nav.classList.remove('active'));
+              activeLink.classList.add('active');
+            }
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+  
+    sections.forEach(section => observer.observe(section));
+  };
+  
+  // Form submission with basic validation and async submission
+  const setupFormSubmission = () => {
+    const form = document.querySelector('.contact-form');
+    if (!form) {
+      console.warn('Contact form not found');
+      return;
+    }
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Basic form validation
+      const formData = new FormData(form);
+      const name = formData.get('name')?.trim();
+      const email = formData.get('email')?.trim();
+      const message = formData.get('message')?.trim();
+  
+      if (!name || !email || !message) {
+        alert('Please fill in all required fields');
+        return;
+      }
+  
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+  
+      try {
+        // Simulated async submission (replace with actual API call)
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        alert('Thank you for your message! I will get back to you soon.');
+        form.reset();
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('There was an error sending your message. Please try again later.');
+      }
+    });
+  };
+  
+  // Initialize all functionality
+  const init = () => {
+    try {
+      setCurrentYear();
+      setupSmoothScrolling();
+      setupFormSubmission();
+    } catch (error) {
+      console.error('Initialization error:', error);
+    }
+  };
+  
+  // Run initialization when DOM is fully loaded
+  document.addEventListener('DOMContentLoaded', init);
