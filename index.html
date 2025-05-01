@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal website of Adithya Kakarla, a Computer Science Engineer and AI/ML Enthusiast showcasing projects, skills, and expertise.">
     <title>Adithya Kakarla | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
+        /* Existing CSS with added styles for Education section */
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -31,7 +32,6 @@
             background-color: var(--light);
         }
         
-        /* Container */
         .container {
             max-width: 1200px;
             width: 90%;
@@ -39,7 +39,6 @@
             padding: 0 1rem;
         }
         
-        /* Typography */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
@@ -74,7 +73,6 @@
             margin-bottom: 1rem;
         }
         
-        /* Header */
         header {
             background-color: var(--dark);
             color: white;
@@ -98,7 +96,6 @@
             text-decoration: none;
         }
         
-        /* Navigation */
         nav {
             display: flex;
             gap: 1.5rem;
@@ -131,7 +128,6 @@
             color: var(--primary);
         }
         
-        /* Mobile Menu */
         .mobile-toggle {
             display: none;
             background: none;
@@ -141,7 +137,6 @@
             cursor: pointer;
         }
         
-        /* Hero Section */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -204,7 +199,6 @@
             z-index: 0;
         }
         
-        /* Sections */
         section {
             padding: 5rem 0;
         }
@@ -213,7 +207,6 @@
             background-color: #f3f4f6;
         }
         
-        /* Projects */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -274,7 +267,6 @@
             font-weight: 500;
         }
         
-        /* Skills */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -308,7 +300,6 @@
             margin-right: 0.5rem;
         }
         
-        /* Contact */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -382,6 +373,7 @@
             justify-content: center;
             color: white;
             flex-shrink: 0;
+            font-size: 1.2rem; /* For emoji clarity */
         }
         
         .contact-details {
@@ -401,7 +393,6 @@
             text-decoration: underline;
         }
         
-        /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
@@ -438,7 +429,25 @@
             background-color: var(--primary);
         }
         
-        /* Responsive Design */
+        /* Education Section Styles */
+        .education-container {
+            max-width: 800px;
+        }
+        
+        .education-container h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-container p {
+            margin-bottom: 0.75rem;
+        }
+        
+        .education-container p strong {
+            color: var(--dark);
+        }
+        
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -485,9 +494,10 @@
             <button class="mobile-toggle" aria-label="Toggle navigation menu">
                 ☰
             </button>
-            <nav aria-label="Main Navigation">
+            <nav aria-label="Main Navigation" role="navigation">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
+                <a href="#education">Education</a>
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
                 <a href="#contact">Contact</a>
@@ -501,7 +511,7 @@
                 <div class="hero-content">
                     <h2>Welcome to my portfolio</h2>
                     <h1>Hi, I'm Adithya Kakarla</h1>
-                    <p>Computer Science Engineer | AI/ML Enthusiast | Problem Solver</p>
+                    <p>Computer Science Engineer | AI/ML Enthusiast | Salesforce Developer</p>
                     <a href="#projects" class="btn">View My Work</a>
                 </div>
             </div>
@@ -511,9 +521,20 @@
         <section id="about">
             <div class="container">
                 <h2>About Me</h2>
-                <p>I'm a passionate Computer Science Engineer with expertise in AI and Machine Learning. With a strong foundation in software development and data analysis, I create innovative solutions to complex problems.</p>
-                <p>My journey in technology is driven by curiosity and a desire to build intelligent systems that make a positive impact. I continuously seek opportunities to learn and grow in this rapidly evolving field.</p>
-                <p>When I'm not coding, you might find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the community.</p>
+                <p>I'm Adithya Kakarla, a Computer Science Engineer from Sree Dattha Institute of Engineering and Science, Hyderabad, with a passion for AI, Machine Learning, and software development. My expertise lies in building innovative solutions using Python, Java, JavaScript, and frameworks like TensorFlow, PyTorch, and Salesforce.</p>
+                <p>During my internship at Salesforce as a Developer Intern (August 2023 - October 2023), I developed custom components using Apex, Lightning Web Components, and Visualforce, enhancing user engagement and adhering to secure coding practices. My projects, like an AI-enabled fraud detection system and a blockchain-based data security solution, reflect my ability to tackle real-world challenges.</p>
+                <p>I've achieved notable milestones, such as developing a chatbot that reduced manual analysis time by 20% and creating 15 insightful reports from transaction data to influence strategic decisions. When not coding, I contribute to open-source projects and explore emerging technologies.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <h2>Education</h2>
+                <div class="education-container">
+                    <h3>Sree Dattha Institute of Engineering and Science, Hyderabad</h3>
+                    <p><strong>B.Tech, Computer Science and Engineering</strong> | November 2020 - June 2024</p>
+                    <p><strong>Relevant Coursework:</strong> Data Structures and Algorithms, Discrete Maths, Operating Systems, Computer Networks, OOP, Databases, Machine Learning, Data Mining, Applied Science, Computer Engineering</p>
+                </div>
             </div>
         </section>
         
@@ -523,57 +544,60 @@
                 <div class="projects-grid">
                     <article class="project">
                         <div class="project-img">
-                            Project Image
+                            <img src="images/fraud-detection.webp" alt="AI Fraud Detection System" loading="lazy">
                         </div>
                         <div class="project-content">
-                            <h3>AI Fraud Detection</h3>
-                            <p>Developed a machine learning model to detect fraudulent transactions with 96% accuracy using Python and Scikit-Learn.</p>
+                            <h3>AI-Enabled Fraud Detection</h3>
+                            <p>Developed a machine learning model using Python, Scikit-Learn, and Pandas to detect fraudulent transactions by identifying anomalies, achieving 96% accuracy.</p>
                             <div class="tags">
                                 <span class="tag">Python</span>
                                 <span class="tag">Scikit-Learn</span>
+                                <span class="tag">Pandas</span>
                                 <span class="tag">Machine Learning</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" aria-label="View AI Fraud Detection project">View Details</a>
-                                <a href="#" aria-label="View GitHub repository for AI Fraud Detection">GitHub</a>
+                                <a href="https://github.com/Adithya17-star/fraud-detection" aria-label="View AI Fraud Detection project" target="_blank" rel="noopener noreferrer">View Details</a>
+                                <a href="https://github.com/Adithya17-star/fraud-detection" aria-label="View GitHub repository for AI Fraud Detection" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
                         </div>
                     </article>
                     
                     <article class="project">
                         <div class="project-img">
-                            Project Image
+                            <img src="images/blockchain-ai.webp" alt="Data Security with Blockchain and AI" loading="lazy">
                         </div>
                         <div class="project-content">
-                            <h3>Smart Health Monitoring</h3>
-                            <p>Designed an IoT-based health monitoring system that tracks vital signs and provides real-time alerts.</p>
+                            <h3>Data Security with Blockchain and AI</h3>
+                            <p>Integrated Blockchain and AI to create a secure, decentralized data access control system, enhancing data integrity with intelligent algorithms.</p>
                             <div class="tags">
-                                <span class="tag">IoT</span>
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">Arduino</span>
+                                <span class="tag">Blockchain</span>
+                                <span class="tag">AI</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Data Security</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" aria-label="View Smart Health Monitoring project">View Details</a>
-                                <a href="#" aria-label="View GitHub repository for Smart Health Monitoring">GitHub</a>
+                                <a href="https://github.com/Adithya17-star/blockchain-ai" aria-label="View Data Security project" target="_blank" rel="noopener noreferrer">View Details</a>
+                                <a href="https://github.com/Adithya17-star/blockchain-ai" aria-label="View GitHub repository for Data Security" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
                         </div>
                     </article>
                     
                     <article class="project">
                         <div class="project-img">
-                            Project Image
+                            <img src="images/churn-analysis.webp" alt="Customer Churn Analysis" loading="lazy">
                         </div>
                         <div class="project-content">
-                            <h3>NLP Document Analyzer</h3>
-                            <p>Created a natural language processing tool that extracts key insights from legal documents.</p>
+                            <h3>Customer Churn Analysis</h3>
+                            <p>Conducted churn analysis using Python, Pandas, and NumPy, optimizing a random forest model to 85% accuracy and presenting insights to leadership.</p>
                             <div class="tags">
                                 <span class="tag">Python</span>
-                                <span class="tag">NLTK</span>
-                                <span class="tag">spaCy</span>
+                                <span class="tag">Pandas</span>
+                                <span class="tag">NumPy</span>
+                                <span class="tag">Random Forest</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" aria-label="View NLP Document Analyzer project">View Details</a>
-                                <a href="#" aria-label="View GitHub repository for NLP Document Analyzer">GitHub</a>
+                                <a href="https://github.com/Adithya17-star/churn-analysis" aria-label="View Customer Churn Analysis project" target="_blank" rel="noopener noreferrer">View Details</a>
+                                <a href="https://github.com/Adithya17-star/churn-analysis" aria-label="View GitHub repository for Customer Churn Analysis" target="_blank" rel="noopener noreferrer">GitHub</a>
                             </div>
                         </div>
                     </article>
@@ -589,9 +613,8 @@
                         <h3>Programming Languages</h3>
                         <ul class="skill-list">
                             <li class="skill-item">Python</li>
-                            <li class="skill-item">JavaScript</li>
                             <li class="skill-item">Java</li>
-                            <li class="skill-item">C++</li>
+                            <li class="skill-item">JavaScript</li>
                             <li class="skill-item">SQL</li>
                         </ul>
                     </div>
@@ -599,9 +622,12 @@
                     <div class="skill-category">
                         <h3>AI & Machine Learning</h3>
                         <ul class="skill-list">
-                            <li class="skill-item">TensorFlow</li>
                             <li class="skill-item">PyTorch</li>
+                            <li class="skill-item">TensorFlow</li>
                             <li class="skill-item">Scikit-Learn</li>
+                            <li class="skill-item">NumPy</li>
+                            <li class="skill-item">Pandas</li>
+                            <li class="skill-item">Generative AI</li>
                             <li class="skill-item">Natural Language Processing</li>
                             <li class="skill-item">Computer Vision</li>
                         </ul>
@@ -610,22 +636,32 @@
                     <div class="skill-category">
                         <h3>Web Development</h3>
                         <ul class="skill-list">
-                            <li class="skill-item">HTML/CSS</li>
                             <li class="skill-item">React</li>
+                            <li class="skill-item">Redux</li>
                             <li class="skill-item">Node.js</li>
-                            <li class="skill-item">Flask</li>
                             <li class="skill-item">Django</li>
+                            <li class="skill-item">Flask</li>
+                            <li class="skill-item">Bootstrap</li>
+                            <li class="skill-item">Sass</li>
+                            <li class="skill-item">jQuery</li>
                         </ul>
                     </div>
                     
                     <div class="skill-category">
                         <h3>Tools & Technologies</h3>
                         <ul class="skill-list">
-                            <li class="skill-item">Git</li>
+                            <li class="skill-item">AWS (S3, EC2, Athena)</li>
+                            <li class="skill-item">Google Colab</li>
+                            <li class="skill-item">Heroku</li>
+                            <li class="skill-item">Git/GitHub</li>
+                            <li class="skill-item">VS Code</li>
                             <li class="skill-item">Docker</li>
-                            <li class="skill-item">AWS</li>
-                            <li class="skill-item">Jupyter Notebook</li>
                             <li class="skill-item">MongoDB</li>
+                            <li class="skill-item">Salesforce DX</li>
+                            <li class="skill-item">Salesforce CLI</li>
+                            <li class="skill-item">Apex</li>
+                            <li class="skill-item">Lightning Web Components</li>
+                            <li class="skill-item">Visualforce</li>
                         </ul>
                     </div>
                 </div>
@@ -666,6 +702,14 @@
                         </div>
                         
                         <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <a href="tel:+918008826037">+91 8008826037</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
                             <div class="contact-icon">in</div>
                             <div class="contact-details">
                                 <h4>LinkedIn</h4>
@@ -677,7 +721,15 @@
                             <div class="contact-icon">G</div>
                             <div class="contact-details">
                                 <h4>GitHub</h4>
-                                <a href="https://github.com/Adithya17-star" target="_blank" rel="noopener noreferrer">github.com/adithya-kakarla</a>
+                                <a href="https://github.com/Adithya17-star" target="_blank" rel="noopener noreferrer">github.com/Adithya17-star</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">🏆</div>
+                            <div class="contact-details">
+                                <h4>Achievements</h4>
+                                <p>Developed a chatbot reducing analysis time by 20% and created 15 reports influencing strategic decisions.</p>
                             </div>
                         </div>
                         
@@ -697,11 +749,10 @@
     <footer>
         <div class="container footer-container">
             <div class="social-links">
-                <a href="https://linkedin.com/in/adithya-kakarla" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
-                <a href="https://github.com/adithya-kakarla" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">G</a>
-                <a href="https://twitter.com/adithya_kakarla" class="social-link" aria-label="Twitter" target="_blank" rel="noopener noreferrer">T</a>
+                <a href="https://www.linkedin.com/in/adithya-kakarla-1902a6328/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">in</a>
+                <a href="https://github.com/Adithya17-star" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">G</a>
             </div>
-            <p>&copy; <span id="current-year">2025</span> Adithya Kakarla. All rights reserved.</p>
+            <p>© <span id="current-year">2025</span> Adithya Kakarla. All rights reserved.</p>
         </div>
     </footer>
     
