@@ -1,7 +1,5 @@
 # 🌐 Portfolio Website - Adithya Kakarla
 
-![Portfolio Screenshot](assets/screenshot.png)
-
 A professional portfolio website showcasing skills, projects, and achievements with a modern, clean design.
 
 ## 🔍 Overview
