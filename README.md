@@ -1,7 +1,3 @@
-# 🌐 Portfolio Website - Adithya Kakarla
-
-A professional portfolio website showcasing skills, projects, and achievements with a modern, clean design.
-
 ## 🔍 Overview
 This portfolio website is built with **HTML**, **CSS**, and **JavaScript** to create an engaging and professional online presence. The website features a responsive design, smooth animations, and an intuitive user experience.
 
