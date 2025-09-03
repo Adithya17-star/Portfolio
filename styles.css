@@ -479,36 +479,39 @@ nav {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
+  padding-left: 20px; /* Space for the line and dot */
 }
 
 .experience-timeline::before {
   content: '';
   position: absolute;
-  left: 2rem;
+  left: 10px; /* Center the line */
   top: 0;
   bottom: 0;
   width: 2px;
-  background: var(--gradient-primary);
+  background: var(--primary-color); /* Solid blue line */
 }
 
 .experience-item {
   display: flex;
-  gap: 3rem;
-  margin-bottom: 3rem;
+  align-items: center; /* Center items vertically */
+  gap: 20px; /* Space between dot and content */
+  margin-bottom: 60px; /* Increased space for better separation */
   position: relative;
 }
 
 .experience-item::before {
   content: '';
   position: absolute;
-  left: 1.5rem;
-  top: 1rem;
-  width: 1rem;
-  height: 1rem;
-  background: var(--primary-color);
+  left: 5px; /* Slightly offset for centering */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust to center the dot */
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color); /* Blue dot */
   border-radius: 50%;
-  border: 3px solid var(--bg-primary);
-  box-shadow: var(--shadow-md);
+  border: none;
+  box-shadow: none;
 }
 
 .experience-date {
@@ -518,6 +521,9 @@ nav {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  position: relative;
+  text-align: right; /* Align text to the right */
+  margin-right: 10px; /* Space before the line */
 }
 
 .experience-content {
@@ -528,6 +534,7 @@ nav {
   box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
   transition: var(--transition-normal);
+  margin-left: 20px; /* Space after the dot */
 }
 
 .experience-content:hover {
@@ -535,39 +542,45 @@ nav {
   transform: translateY(-2px);
 }
 
-.experience-content h3 {
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  font-size: 1.25rem;
-}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .experience-timeline {
+    padding-left: 20px;
+  }
 
-.company {
-  color: var(--text-secondary);
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-}
+  .experience-timeline::before {
+    display: block;
+    left: 10px;
+  }
 
-.experience-highlights {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+  .experience-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 
-.experience-highlights li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
+  .experience-item::before {
+    display: block;
+    left: 5px;
+    top: 10px; /* Reset to top for mobile */
+    transform: none; /* Remove transform for mobile */
+  }
 
-.experience-highlights li::before {
-  content: '▸';
-  color: var(--primary-color);
-  font-weight: bold;
-  margin-top: 0.1rem;
+  .experience-date {
+    position: static;
+    min-width: auto;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+
+  .experience-content {
+    margin-left: 0;
+  }
 }
 
 /* Hero Actions */
@@ -1094,11 +1107,11 @@ nav {
   }
   
   .experience-timeline::before {
-    left: 1.5rem;
+    left: 10px;
   }
   
   .experience-item::before {
-    left: 1rem;
+    left: 4px;
   }
 }
 
@@ -1157,11 +1170,12 @@ nav {
   }
   
   .experience-timeline {
-    padding-left: 0;
+    padding-left: 20px;
   }
-  
+
   .experience-timeline::before {
-    display: none;
+    display: block;
+    left: 10px;
   }
   
   .experience-item {
@@ -1170,17 +1184,24 @@ nav {
   }
   
   .experience-item::before {
-    display: none;
+    display: block;
+    left: 4px;
+    top: 10px;
   }
   
   .experience-date {
+    position: static;
     min-width: auto;
     background: var(--gradient-primary);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius-md);
     text-align: center;
-    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+  
+  .experience-content {
+    margin-left: 0;
   }
   
   .testimonials-grid {
